@@ -1,0 +1,132 @@
+This is a famous question.
+
+Powerset is defined as the set of all subsets.
+
+    empty set
+    All of length 1,
+    then all of length 2,
+    ...
+
+[1, 2] is the same as [2, 1]
+
+So order doesn't make it different.
+
+You can implement this iteratively or recursively.
+
+Iterative is simpler, fewer lines, and more intuitive.
+
+Recursive solution is tougher.
+
+have input array,
+
+    P([1, 2, 3])
+
+Final array starts empty.
+Add in the empty array.
+
+Can loop through the array, and starting creating new sets 
+and add them to the subsets array.
+
+so Generate by adding the element 
+to all the existing subsets.
+
+    // Create a new subet from each existing subset
+    // just adding the current element to the end of it.
+
+[[]]
+
+[[], [1]]
+
+    // go through all the existing subsets,
+    // and create a new subsets based on that existing one, adding the value of 2
+
+[[], [1], [2], [1, 2]]
+    
+     // go through all the existing subsets,
+    // and create a new subsets based on that existing one, adding the value of 3
+
+[[], [1], [2], [1, 2], [3], [3, 1], [3, 2], [3, 2, 1]]
+
+
+    be sure to keep track of the length of the 'original' array, before adding 
+    new subsets to it
+
+
+Time Complexity
+    different than other algorithms.
+
+    As usually you think of for loop.
+
+    But this is trickier as we are 
+    generating new subsets every time.
+
+    So any 'for' loop will take longer and longer.
+
+    One way of thinking about it is,
+    how many subsets do I have at the very end.
+
+    So if you know how many subsets you have,
+    you can then figure out how long it took to generate them.
+
+    To figure out how many subsets we have,
+    either you could know the math formula.
+
+    // the number of sets in a powerset 
+    // formula is 2^n 
+    // 2^n subsets 
+
+    but how to know this?
+
+        you can notice that you begin with one subset,
+        then you double it,
+
+        // go from 1 subset to 2 subsets 
+
+    then go from 2 subsets to 4 subsets 
+
+    4 subsets to 8 subsets 
+
+
+Every time we are doubling the amount of subsets that we have.
+
+Every number that we loop through, we double the amount of subsets.
+
+So we double every time, n times.
+    So we have 2^n subsets 
+
+So now we can say,
+how long does it take us to create these arrays,
+    every time we have to append an element.
+
+    These subsets are at most of length n.
+        // for [3, 2, 1]
+        for the length of the input array.
+
+    At least length 0
+        // for []
+
+n / 2 
+    so it takes 
+
+
+    O(2^n * (n))
+
+    so the n is based on the time to create a new array 
+    for the subsets 
+
+For the space, 
+    O(2^n * (n))
+
+    As we are storing 2^n subsets 
+    and within,
+        the length of the subsets has on average n/2 elements
+        with worst case n
+
+---
+Recursive implementation is tougher.
+
+So notice we generated all the subsets adding the number 1,
+then all subsets adding the number 2,
+then all the subsets adding the number 3
+
+

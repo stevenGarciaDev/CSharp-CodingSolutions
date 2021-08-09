@@ -1,0 +1,33 @@
+So the brute force approach would mean 
+doing an in-order traversal and adding each value 
+into a list collection.
+
+    The list collection will be in sorted order,
+    and therefore you can retrive the kth largest
+    by doing 
+
+    numbers.Length - k
+
+    So time complexity is O(v + e) == O(n)
+    Space complexity is O(n)
+
+But since we are concerned with the largest values.
+
+It is not useful to start searching with left subtree.
+
+Instead do a reverse in order traveral so that we can find 
+the kth largest value quicker.
+
+We can also optimize as to not use so much space 
+but instead of using a collection.
+
+We instead just keep track of the number of nodes visited 
+and the value of the previously visited node.
+
+It is important to keep track of the previously visisted node,
+as that will be the value to return once we have visisted 
+the number of nodes that == k.
+
+Time complexity O(n)
+Space complexity O(1)
+
